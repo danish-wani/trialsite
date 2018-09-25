@@ -15,14 +15,14 @@ class InvestigatorSignupForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = Investigator
-        fields = UserCreationForm.Meta.fields #+ ('custom_field',)
+        fields = UserCreationForm.Meta.fields + ('first_name','last_name','email',)
 
 
 class OperatorSignupForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = Operator
-        fields = UserCreationForm.Meta.fields +('creator',)
+        fields = UserCreationForm.Meta.fields +('creator','first_name','last_name','email',)
 
 
 class ListOperatorForm():
@@ -52,4 +52,4 @@ class PatientSignupForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = Patient
-        fields = UserCreationForm.Meta.fields +('trials_enrolled',)
+        fields = UserCreationForm.Meta.fields +('trials_enrolled','first_name','last_name','email',)

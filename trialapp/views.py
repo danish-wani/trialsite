@@ -90,7 +90,7 @@ def signupPatient(request):
     else:
         form = PatientSignupForm(request.POST)
 
-    return render(request,'trialapp/signupPatient.html',{'form':form})
+    return render(request,'trialapp/signup.html',{'form':form})
 
 
 @login_required
