@@ -8,16 +8,8 @@
 
 <body>
 	<div class="container bg-light">
-		 <h1>TrialX</h1>
-		 What Is a Clinical Trial?
+		<h1><b>Clinical Trials</b></h1>
 
-A clinical trial is a research program conducted with patients to evaluate a new medical treatment, drug, or device. The purpose of clinical trials is to find new and improved methods of treating, preventing, screening for, and diagnosing different diseases.
-
-Clinical trials make it possible to apply the latest scientific and technological advances to patient care.
-
-During a clinical trial, doctors use the best available treatment as a standard to evaluate new treatments. The new treatments are hoped to be at least as effective as -- or possibly more effective than -- current treatments.
-
-New treatment options are first researched in the laboratory, where they are carefully studied in the test tube and in laboratory animals. Only the treatments most likely to work are further evaluated in a small group of humans prior to applying them in a larger clinical trial.
 
 		<form action="" method="POST" class="float-right">
 			<fieldset>
@@ -30,7 +22,52 @@ New treatment options are first researched in the laboratory, where they are car
 				<input type="submit" value="Log Out" class="btn btn-danger " formaction="{% url 'logout' %}">
 			</fieldset>
 			<div class='col-md-*'>	<h5> Username: {{request.user}}</h5> </div>
-		</form>
+		</form><br><br><br>
+		<h3>What Is a Clinical Trial?</h3><br>
+
+A clinical trial is a research program conducted with patients to evaluate a new medical treatment, drug, or device. The purpose of clinical trials is to find new and improved methods of treating, preventing, screening for, and diagnosing different diseases.
+
+Clinical trials make it possible to apply the latest scientific and technological advances to patient care.
+
+During a clinical trial, doctors use the best available treatment as a standard to evaluate new treatments. The new treatments are hoped to be at least as effective as -- or possibly more effective than -- current treatments.
+
+New treatment options are first researched in the laboratory, where they are carefully studied in the test tube and in laboratory animals. Only the treatments most likely to work are further evaluated in a small group of humans prior to applying them in a larger clinical trial.
+	
+<br><br>	
+	
+<h1> Trials: </h1>
+        <div class="container bg-light">
+                <table class="table table-striped mx-auto">
+                        <thead>
+                                <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th> Country</th>
+                                        <th> City</th>
+                                        <th></th>
+                                        <th></th>
+
+                                </tr>
+                        </thead>
+                        <tbody>
+                                {% for t in trials %}
+                                <form method='POST'>
+                                        {% csrf_token %}
+                                        <tr>
+                                        <td>{{t.title}}</td>
+                                        <td>{{t.description}}</td>
+                                        <td>{{t.country}}</td>
+                                        <td>{{t.city}}</td>
+					<td><input type="submit" value="Enroll" class="btn btn-primary" formaction=""></a></td>
+					<td><input type="submit" value="Contact" class="btn btn-success " formaction=""></a></td>
+
+                                </tr>
+                                </form>
+                                {% endfor %}
+                        </tbody>
+                                                                                                                                                              10,7          Top
+                </div>
+	
 	</div>
 </body>
 </html>

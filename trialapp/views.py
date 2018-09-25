@@ -12,13 +12,23 @@ from .forms import ListOperatorForm
 from .forms import EditOperatorForm, CreateTrialForm, PatientSignupForm
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import Permission, User
-
+from itertools import chain
 
 
 
 def home(request):
-    return render(request,'trialapp/home.html',)
+    #if not request.user.is_anonymous:
+    #    trials = Trial.objects.filter(creator=request.user)
+    #    operators = Operator.objects.filter(creator=request.user)
+    #    print(trials)
+    #    for o in operators:
+    #        trials = trials | Trial.objects.filter(creator=o)
 
+    #    print(trials)
+        
+    trials = Trial.objects.all()
+    return render(request,'trialapp/home.html',{'trials':trials})
+    
 
 
 
@@ -58,7 +68,6 @@ def signupOperator(request):
         if form.is_valid():
             form.save()
             
-            print(user.username)
             return HttpResponse('operator created')
         else:
             print('not valid')
@@ -102,6 +111,11 @@ def createTrial(request):
 @login_required
 def listTrial(request):
     trials = Trial.objects.filter(creator=request.user)
+    operators = Operator.objects.filter(creator=request.user)
+    print(trials)
+    for o in operators:
+        trials = trials | Trial.objects.filter(creator=o)
+
     return render(request,'trialapp/listTrial.html',{'trials':trials})
 
 
