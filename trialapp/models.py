@@ -58,3 +58,9 @@ class Conversation(models.Model):
 
     def __str__(self):
         return self.sender+" to "+self.receiver+":" + self.message
+
+
+class Enrollment(models.Model):
+    patient_name = models.CharField(max_length=15)
+    trial = models.OneToOneField('Trial',on_delete=models.CASCADE)
+    email = models.EmailField()
