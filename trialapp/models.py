@@ -14,8 +14,6 @@ class Trial(models.Model):
     def __str__(self):
         return self.title
 
-:
-
 
 class TrialList(models.Model):
     title = models.CharField(max_length=100)
@@ -28,30 +26,21 @@ class TrialList(models.Model):
 
 class Investigator(User):
     is_superuser = True
-   
+    
     def __str__(self):
         return self.username
 
 class Operator(User):
-    
     creator = models.ForeignKey('Investigator',on_delete=models.CASCADE)
     is_operator = True
     can_create_trial = models.BooleanField(default= False)
    
-
-   
-
     def __str__(self):
         return self.username
 
 class Patient(User):
-    trials_enrolled = models.ForeignKey('TrialList',on_delete=models.CASCADE)
+    trials_enrolled = models.ManyToManyField('Trial',)
    
-    class Meta:
-        permissions = (
-                ("view_trial", "Can view trial"),
-            )
-
 
     def __str__(self):
         return 'Patient'
