@@ -9,13 +9,12 @@ class Trial(models.Model):
     description = models.TextField()
     country = models.CharField(max_length=80)
     city = models.CharField(max_length=90)
-    investigator = models.ForeignKey('Investigator',on_delete=models.CASCADE)
-    operator = models.ForeignKey('Operator',on_delete=models.CASCADE)
-    created_by_investigator = models.CharField(max_length=100, blank= True)
-    created_by_operator = models.CharField(max_length=100, blank=True)
+    creator = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
     
     def __str__(self):
         return self.title
+
+:
 
 
 class TrialList(models.Model):
@@ -29,7 +28,7 @@ class TrialList(models.Model):
 
 class Investigator(User):
     is_superuser = True
-    
+   
     def __str__(self):
         return self.username
 
@@ -40,10 +39,10 @@ class Operator(User):
     can_create_trial = models.BooleanField(default= False)
    
 
-    
+   
 
     def __str__(self):
-        return self.user 
+        return self.username
 
 class Patient(User):
     trials_enrolled = models.ForeignKey('TrialList',on_delete=models.CASCADE)
@@ -70,4 +69,3 @@ class Conversation(models.Model):
 
     def __str__(self):
         return self.sender+" to "+self.receiver+":" + self.message
-
