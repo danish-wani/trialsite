@@ -26,7 +26,7 @@ class TrialList(models.Model):
 
 class Investigator(User):
     is_superuser = True
-    
+
     def __str__(self):
         return self.username
 
