@@ -9,20 +9,10 @@ class Trial(models.Model):
     description = models.TextField()
     country = models.CharField(max_length=80)
     city = models.CharField(max_length=90)
-    creator = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
+    creator = models.ForeignKey(User,on_delete=models.CASCADE)
     
     def __str__(self):
         return self.title
-
-
-class TrialList(models.Model):
-    title = models.CharField(max_length=100)
-    
-    def __str__(self):
-        return self.title
-
-
-
 
 class Investigator(User):
     is_superuser = True
@@ -31,7 +21,7 @@ class Investigator(User):
         return self.username
 
 class Operator(User):
-    creator = models.ForeignKey('Investigator',on_delete=models.CASCADE)
+    creator = models.ForeignKey(Investigator,on_delete=models.CASCADE)
     is_operator = True
     can_create_trial = models.BooleanField(default= False)
    

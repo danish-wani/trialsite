@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+from django import forms
 from .models import Investigator, Operator, Trial, Enrollment
 
 class InvestigatorForm(ModelForm):
@@ -59,4 +60,7 @@ class EnrollmentForm(ModelForm):
         model = Enrollment
         fields = ('trial','patient_name','email',)
 
+class ContactForm(forms.Form):
+    consultant = forms.CharField(label='Consultant',max_length=15)
+    email = forms.EmailField(label='Email')
 
