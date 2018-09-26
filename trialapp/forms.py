@@ -1,5 +1,6 @@
 from django.forms import ModelForm
-from .models import Investigator, Operator, Trial
+from django import forms
+from .models import Investigator, Operator, Trial, Enrollment
 
 class InvestigatorForm(ModelForm):
     class Meta:
@@ -53,3 +54,13 @@ class PatientSignupForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = Patient
         fields = UserCreationForm.Meta.fields +('trials_enrolled','first_name','last_name','email',)
+        
+class EnrollmentForm(ModelForm):
+    class Meta:
+        model = Enrollment
+        fields = ('trial','patient_name','email',)
+
+class ContactForm(forms.Form):
+    consultant = forms.CharField(label='Consultant',max_length=15)
+    email = forms.EmailField(label='Email')
+

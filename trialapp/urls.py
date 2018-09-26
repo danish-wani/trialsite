@@ -4,8 +4,10 @@ from . import views
 from django.contrib.auth.views import LoginView
 urlpatterns = [
     path('',views.home,name='home'),
+    path('enroll/<title>/',views.enroll,name='enroll'),
+    path('contact/<title>/',views.contact,name='contact'),
     path('signup/',views.signup,name='signup'),
-    path('signup_patient/',views.signupPatient,name='signup_patient'),
+    #path('signup_patient/',views.signupPatient,name='signup_patient'),
     path('dashboard/',views.dashboard, name='dashboard'),
     path('login/',LoginView.as_view(), name='login'),
     path('logout/',views.logout_view, name='logout'),
@@ -15,6 +17,7 @@ urlpatterns = [
     path('dashboard/listOperator/',views.listOperator, name='listOperator'),
     path('dashboard/createTrial/',views.createTrial, name='createTrial'),
     path('dashboard/listTrial/',views.listTrial, name='listTrial'),
+    path('dashboard/listEnrollment/',views.listEnrollment, name='listEnrollment'),
     path('dashboard/listTrial/deleteTrial/<title>/',views.deleteTrial, name='deleteTrial'),
 ]
 

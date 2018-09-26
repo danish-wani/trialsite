@@ -10,40 +10,47 @@
 	<div class="container bg-light">
 		<h1><b>Clinical Trials</b></h1>
 
-
+		{% if request.user.is_authenticated %}
 		<form action="" method="POST" class="float-right">
 			<fieldset>
 				<legend>  </legend>
 				{% csrf_token %}
-				<input type="submit" value="Sign Up As Patient" class="btn btn-primary " formaction="{% url 'signup_patient'%}">
-				<input type="submit" value="Sign Up As Investigator" class="btn btn-primary " formaction="{% url 'signup'%}">
 				<input type="submit" value="Dashboard" class="btn btn-primary " formaction="{% url 'dashboard'%}">
-				<input type="submit" value="Log in" class="btn btn-success " formaction="{% url 'login'%}">
 				<input type="submit" value="Log Out" class="btn btn-danger " formaction="{% url 'logout' %}">
 			</fieldset>
-			<div class='col-md-*'>	<h5> Username: {{request.user}}</h5> </div>
-		</form><br><br><br>
+                        <div class='col-md-*'>  <h5> Username: {{request.user}}</h5> <h5> Email: {{request.user.email}}</h5> </div>
+		</form>
+		{% else%}
+		 <form action="" method="POST" class="float-right">
+                        <fieldset>
+                                <legend>  </legend>
+                                {% csrf_token %}
+				<!--<input type="submit" value="Sign Up As Patient" class="btn btn-primary " formaction="">-->
+                                <input type="submit" value="Sign Up As Investigator" class="btn btn-primary " formaction="{% url 'signup'%}">
+                                <input type="submit" value="Log in" class="btn btn-success " formaction="{% url 'login'%}">
+                        </fieldset>
+			<div class='col-md-*'>  <h5> Username: {{request.user}}</h5> <h5> Email: {{request.user.email}}</h5> </div>
+                </form>
+		{% endif %}
+		<br><br><br>
 		<h3>What Is a Clinical Trial?</h3><br>
 
-A clinical trial is a research program conducted with patients to evaluate a new medical treatment, drug, or device. The purpose of clinical trials is to find new and improved methods of treating, preventing, screening for, and diagnosing different diseases.
+		<span>A clinical trial is a research program conducted with patients to evaluate a new medical treatment, drug, or device. The purpose of clinical trials is to find new and improved methods of treating, preventing, screening for, and diagnosing different diseases.
 
 Clinical trials make it possible to apply the latest scientific and technological advances to patient care.
 
 During a clinical trial, doctors use the best available treatment as a standard to evaluate new treatments. The new treatments are hoped to be at least as effective as -- or possibly more effective than -- current treatments.
 
-New treatment options are first researched in the laboratory, where they are carefully studied in the test tube and in laboratory animals. Only the treatments most likely to work are further evaluated in a small group of humans prior to applying them in a larger clinical trial.
-	
-<br><br>	
+New treatment options are first researched in the laboratory, where they are carefully studied in the test tube and in laboratory animals. Only the treatments most likely to work are further evaluated in a small group of humans prior to applying them in a larger clinical trial.</span>
 	
 <h1> Trials: </h1>
-        <div class="container bg-light">
-                <table class="table table-striped mx-auto">
+		<table class="table table-striped mx-auto">
                         <thead>
                                 <tr>
                                         <th>Title</th>
                                         <th>Description</th>
-                                        <th> Country</th>
-                                        <th> City</th>
+                                        <th>Country</th>
+                                        <th>City</th>
                                         <th></th>
                                         <th></th>
 
@@ -58,8 +65,8 @@ New treatment options are first researched in the laboratory, where they are car
                                         <td>{{t.description}}</td>
                                         <td>{{t.country}}</td>
                                         <td>{{t.city}}</td>
-					<td><input type="submit" value="Enroll" class="btn btn-primary" formaction=""></a></td>
-					<td><input type="submit" value="Contact" class="btn btn-success " formaction=""></a></td>
+					<td><input type="submit" value="Enroll" class="btn btn-primary" formaction="{% url 'enroll' title=t.title%}"></a></td>
+					<td><input type="submit" value="Contact" class="btn btn-success " formaction="{% url 'contact' title=t.title%}"></a></td>
 
                                 </tr>
                                 </form>
@@ -68,6 +75,6 @@ New treatment options are first researched in the laboratory, where they are car
                                                                                                                                                               10,7          Top
                 </div>
 	
-	</div>
+	
 </body>
 </html>

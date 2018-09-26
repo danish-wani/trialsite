@@ -6,13 +6,12 @@ from .forms import InvestigatorSignupForm
 from .models import Investigator, Trial
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
-from .models import Operator
-from .forms import OperatorSignupForm 
+from .models import Operator, Enrollment
+from .forms import OperatorSignupForm, ContactForm
 from .forms import ListOperatorForm 
-from .forms import EditOperatorForm, CreateTrialForm, PatientSignupForm
+from .forms import EditOperatorForm, CreateTrialForm, PatientSignupForm, EnrollmentForm
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import Permission, User
-from itertools import chain
 
 
 
@@ -78,17 +77,19 @@ def signupOperator(request):
 
 
 
-def signupPatient(request):
+def enroll(request,title):
     if request.method == 'POST':
         form = PatientSignupForm(request.POST)
         if form.is_valid():
+            print(form.email)
             form.save()
 
             return HttpResponse('patient created')
         else:
             print('not valid')
     else:
-        form = PatientSignupForm(request.POST)
+        trial = Trial.objects.get(title=title)
+        form = PatientSignupForm(initial={'trials_enrolled':trial})
 
     return render(request,'trialapp/signup.html',{'form':form})
 
@@ -176,3 +177,34 @@ def deleteTrial(request,title):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/trialapp')
+
+
+
+#def enroll(request,title):
+
+#    if request.method == 'POST':
+#        form = EnrollmentForm(request.POST)
+#        if form.is_valid():
+#            form.save()
+#            return HttpResponse('Successfully Enrolled')
+    
+#    form = EnrollmentForm(initial={'trial':title})
+#    return render(request,'trialapp/enrollment.html',{'form':form})
+
+def listEnrollment(request):
+    enrolled = Enrollment.objects.all()
+    return render(request,'trialapp/listEnrollment.html',{'enrolled':enrolled})
+
+
+def contact(request, title):
+    trial = Trial.objects.get(title=title)
+    creator_username = trial.creator
+    try:
+            creator = Investigator.objects.get(username=creator_username)
+            form = ContactForm(initial={'consultant':creator.username,'email':creator.email,})
+            return render(request,'trialapp/contact.html',{'form':form})
+    except: 
+            creator = Operator.objects.get(username=creator_username)
+            form = ContactForm(initial={'consultant':creator.username,'email':creator.email,})
+
+            return render(request,'trialapp/contact.html',{'form':form})
