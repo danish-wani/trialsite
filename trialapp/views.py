@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect,HttpResponse
-from .forms import InvestigatorForm
 from .forms import InvestigatorSignupForm
 from .models import Investigator, Trial
 from django.contrib.auth.decorators import login_required
@@ -9,21 +8,11 @@ from django.contrib.auth.forms import UserChangeForm
 from .models import Operator, Enrollment
 from .forms import OperatorSignupForm, ContactForm
 from .forms import ListOperatorForm 
-from .forms import EditOperatorForm, CreateTrialForm, PatientSignupForm, EnrollmentForm
-from django.contrib.auth.decorators import permission_required
-from django.contrib.auth.models import Permission, User
+from .forms import EditOperatorForm, CreateTrialForm, PatientSignupForm
 
 
 
 def home(request):
-    #if not request.user.is_anonymous:
-    #    trials = Trial.objects.filter(creator=request.user)
-    #    operators = Operator.objects.filter(creator=request.user)
-    #    print(trials)
-    #    for o in operators:
-    #        trials = trials | Trial.objects.filter(creator=o)
-
-    #    print(trials)
         
     trials = Trial.objects.all()
     return render(request,'trialapp/home.html',{'trials':trials})

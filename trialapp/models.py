@@ -10,12 +10,12 @@ class Trial(models.Model):
     country = models.CharField(max_length=80)
     city = models.CharField(max_length=90)
     creator = models.ForeignKey(User,on_delete=models.CASCADE)
-    
     def __str__(self):
         return self.title
 
 class Investigator(User):
     is_superuser = True
+
 
     def __str__(self):
         return self.username
@@ -24,14 +24,13 @@ class Operator(User):
     creator = models.ForeignKey(Investigator,on_delete=models.CASCADE)
     is_operator = True
     can_create_trial = models.BooleanField(default= False)
-   
+
     def __str__(self):
         return self.username
 
 class Patient(User):
     trials_enrolled = models.ManyToManyField('Trial',)
    
-
     def __str__(self):
         return 'Patient'
 

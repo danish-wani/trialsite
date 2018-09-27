@@ -29,7 +29,9 @@
                                 <input type="submit" value="Sign Up As Investigator" class="btn btn-primary " formaction="{% url 'signup'%}">
                                 <input type="submit" value="Log in" class="btn btn-success " formaction="{% url 'login'%}">
                         </fieldset>
-			<div class='col-md-*'>  <h5> Username: {{request.user}}</h5> <h5> Email: {{request.user.email}}</h5> </div>
+			<div class='col-md-*'>  <h5> Username: {{request.user}}</h5> <h5> Email: {{request.user.email}}</h5>
+            <h5> User: {{request.user.meta.db_table}}</h5>
+            </div>
                 </form>
 		{% endif %}
 		<br><br><br>
