@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46614eb5-78ad-4eb0-8c72-02a8cf700aae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialapp/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialapp/templates/trialapp/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/templates/trialapp/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="46614eb5-78ad-4eb0-8c72-02a8cf700aae" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +12,7 @@
     <session id="-675206853">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -130,7 +125,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="133" />
     <option name="y" value="47" />
     <option name="width" value="1400" />
@@ -182,7 +177,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -238,8 +233,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1600" height="810" extended-state="7" />
-    <editor active="true" />
+    <frame x="0" y="25" width="1600" height="810" extended-state="6" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24967825" />
