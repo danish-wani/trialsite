@@ -22,23 +22,23 @@
                                 </tr>
                         </thead>
                         <tbody>
-                                {% for t in trials %}
+                                {% for t in object_list %}
                                 <form method='POST'>
                                         {% csrf_token %}
                                         <tr>
                                         <td>{{t.title}}</td>
-					<td>{{t.description}}</td>
+					                    <td>{{t.description}}</td>
                                         <td>{{t.creator}}</td>
                                         <td>{{t.country}}</td>
                                         <td>{{t.city}}</td>
-					<td><input type="submit" value="Delete Trial" class="btn btn-danger " formaction="{% url 'deleteTrial' title=t.title %}"></a></td>
-                                        <!--<td><input type="submit" value="Update Operator" class="btn btn-success " formaction=""></a></td>-->
+					                    <td><input type="submit" value="Delete Trial" class="btn btn-danger " formaction="{% url 'deleteTrial' title=t.title %}"></a></td>
+                                        <td><input type="submit" value="Edit Trial" class="btn btn-success " formaction="{%url 'editTrial' title=t.title %}"></a></td>
 
                                 </tr>
                                 </form>
                                 {% endfor %}
                         </tbody>
-                                                                                                                                                              10,7          Top
+
 		</div>
 </body>
 </html>
