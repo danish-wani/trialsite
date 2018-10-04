@@ -8,8 +8,8 @@ from django.contrib.auth.forms import UserChangeForm
 from .models import Operator, Enrollment
 from .forms import OperatorSignupForm, ContactForm
 from .forms import ListOperatorForm 
-from .forms import EditOperatorForm, CreateTrialForm, PatientSignupForm
-
+from .forms import CreateTrialForm, PatientSignupForm
+from django.views import View
 
 
 def home(request):
@@ -66,21 +66,29 @@ def signupOperator(request):
 
 
 
-def enroll(request,title):
-    if request.method == 'POST':
-        form = PatientSignupForm(request.POST)
+class EnrollView(View):
+    form_class = PatientSignupForm
+    template_name='trialapp/signup.html'
+
+    def get_queryset(self):
+        return self.kargs['title']
+
+    def get(self, request,*args, **kargs):
+        print(self.args['title'])
+        form = self.form_class()
+        print('get request')
+        print(self.get_queryset())
+        return render(request, self.template_name, {'form': form})
+
+
+
+    def post(self, request, *args, **kargs):
+        form = self.form_class(request.POST)
+
         if form.is_valid():
-            print(form.email)
-            form.save()
 
-            return HttpResponse('patient created')
-        else:
-            print('not valid')
-    else:
-        trial = Trial.objects.get(title=title)
-        form = PatientSignupForm(initial={'trials_enrolled':trial})
-
-    return render(request,'trialapp/signup.html',{'form':form})
+            return HttpResponse('Successfully signed up')
+        return render(request, self.template_name, {'form': form})
 
 
 @login_required
@@ -197,3 +205,135 @@ def contact(request, title):
             form = ContactForm(initial={'consultant':creator.username,'email':creator.email,})
 
             return render(request,'trialapp/contact.html',{'form':form})
+
+
+
+
+
+# views for testing purpose     GENERIC EDITING VIEW
+
+from django.views.generic.edit import CreateView,UpdateView, FormView
+from .models import Patient
+from .forms import LoginForm
+
+
+from django.contrib.auth import authenticate, login, logout
+
+from django.views.generic.base import View
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+
+
+
+''' generic display views'''
+
+
+
+class ListTrials(ListView):
+    template_name = 'trialapp/listTrial.html'
+    success_url = '/trialapp'
+
+    def get_queryset(self):
+        return Trial.objects.all()
+
+class DetailTrial(DetailView):
+    template_url = 'trialapp/trial_detail.html'
+    model = 'Trial'
+    queryset = Trial.objects.all()
+    def get_object(self):
+        print(self.args)
+        print(self.kwargs)
+        print(self.request)
+        title_ = Trial.objects.get(title=self.kwargs['title'])
+        return title_
+
+
+
+'''generic editing view'''
+
+class CreatePatient(CreateView):
+    form_class = PatientSignupForm
+    template_name = 'trialapp/signup.html'
+    success_url = '/trialapp'
+
+
+class UpdateOperator(UpdateView):
+    model = Operator
+    # form_class = OperatorSignupForm
+    # template_name = 'trialapp/operator_form.html'
+    fields = ['username','first_name','last_name','first_name','email','creator']
+    # success_url = '/trialapp'
+    #
+    # def get(self,*args,**kwargs):
+    #     op = self.get_object()
+    #     form = OperatorSignupForm(initial={'username':op.username})
+    #     return render(self.request, self.template_name,{'form':form})
+    #
+    #
+    #
+    #
+
+    def get_initial(self):
+        initial = super(UpdateOperator, self).get_initial()
+        print('initial data', initial)
+
+        # retrieve current object
+        object = self.get_object()
+
+        initial['username'] = object.username
+        initial['creator'] = object.creator
+
+        return initial
+
+    def get_object(self, queryset=None):
+        obj = Operator.objects.get(id=self.kwargs['pk'])
+        print(obj)
+        return obj
+
+# class Login(FormView):
+#     form_class = LoginForm
+#     template_name = 'trialapp/login.html'
+#     success_url = '/trialapp'
+#
+#     def form_valid(self,form):
+#         username = form.cleaned_data['username']
+#         password = form.cleaned_data['password']
+#         user = authenticate(username=username, password=password)
+#         if user is not None and user.is_active:
+#             login(self.request, user)
+#         else:
+#             return HttpResponse('Invalid Username or Password')
+#
+#          return super().form_valid(form)
+
+'''generic base view'''
+class Login(View):
+    form_class = LoginForm
+    success_url = '/trialapp'
+    template_name = 'trialapp/login.html'
+    def post(self, request):
+        logout(request)
+        # username = password = ''
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+        if user is not None and user.is_active:
+            login(request, user)
+            return HttpResponseRedirect(self.success_url)
+        return render(request, self.template_name,{'form':self.form_class,})
+
+    def get(self, request):
+        text = 'less than < greater than > single quote ampersand &'
+        return render(request, self.template_name, {'form':self.form_class,})
+
+
+
+
+
+# class Author(RedirectView):
+#     url_pattern = 'dashboard'
+#
+#     def get_redirect_url(self,*args,**kwargs):
+#         return super().get_redirect_url(*args,**kwargs)

@@ -1,14 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-        <title> Home </title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+        <!--<title> Home </title>-->
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+<!--</head>-->
 
-<body>
-	<div class="container bg-light">
-		<h1><b>Clinical Trials</b></h1>
+<!--<body>-->
+	<!--<div class="container bg-light">-->
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title%}
+
+{% block content %}
+    <h1><b>Clinical Trials</b></h1>
+        <!--{% url 'enrollment' 'abc'  as the_url %}-->
+        <!--<a href="{{ the_url }}">I'm linking to {{ the_url }}</a>-->
+
+        <!--{% load trialapp_extras %}-->
+
+        <!--{%with "danish wani" as name  %}-->
+
+            <!--{{name|cut:'h'}}-->
+        <!--{% endwith%}-->
+
+        <!--{% filter  force_escape| lower %}-->
+           <!--< danIsh >-->
+        <!--{% endfilter%}-->
+        {{name}}
 
 		{% if request.user.is_authenticated %}
 		<form action="" method="POST" class="float-right">
@@ -27,7 +45,7 @@
                                 {% csrf_token %}
 				<!--<input type="submit" value="Sign Up As Patient" class="btn btn-primary " formaction="">-->
                                 <input type="submit" value="Sign Up As Investigator" class="btn btn-primary " formaction="{% url 'signup'%}">
-                                <input type="submit" value="Log in" class="btn btn-success " formaction="{% url 'login'%}">
+                                <input type="submit" value="Log in" class="btn btn-success " formaction="{% url 'login' %}">
                         </fieldset>
 			<div class='col-md-*'>  <h5> Username: {{request.user}}</h5> <h5> Email: {{request.user.email}}</h5>
             <h5> User: {{request.user.meta.db_table}}</h5>
@@ -35,9 +53,9 @@
                 </form>
 		{% endif %}
 		<br><br><br>
-		<h3>What Is a Clinical Trial?</h3><br>
+		<h3> What is a Clinical Trial? </h3><br>
 
-		<span>A clinical trial is a research program conducted with patients to evaluate a new medical treatment, drug, or device. The purpose of clinical trials is to find new and improved methods of treating, preventing, screening for, and diagnosing different diseases.
+		<span> A clinical trial is a research program conducted with patients to evaluate a new medical treatment, drug, or device. The purpose of clinical trials is to find new and improved methods of treating, preventing, screening for, and diagnosing different diseases.
 
 Clinical trials make it possible to apply the latest scientific and technological advances to patient care.
 
@@ -50,33 +68,44 @@ New treatment options are first researched in the laboratory, where they are car
                         <thead>
                                 <tr>
                                         <th>Title</th>
-                                        <th>Description</th>
-                                        <th>Country</th>
-                                        <th>City</th>
+                                        <!--<th>Description</th>-->
+                                        <!--<th>Country</th>-->
+                                        <!--<th>City</th>-->
                                         <th></th>
                                         <th></th>
 
                                 </tr>
                         </thead>
                         <tbody>
+                                <!--{% cycle '1' '2' as num silent%}-->
                                 {% for t in trials %}
+                                <!--{{forloop.first}}-->
+                                <!--{{forloop.last}}-->
                                 <form method='POST'>
                                         {% csrf_token %}
                                         <tr>
-                                        <td>{{t.title}}</td>
-                                        <td>{{t.description}}</td>
-                                        <td>{{t.country}}</td>
-                                        <td>{{t.city}}</td>
+                                            <!--<h3>  {{ num }}</h3>-->
+                                            <!--<h5>{% cycle num %}</h5>-->
+                                            <!--{% autoescape on %}-->
+                                                <!--{{extra_context}}-->
+                                            <!--{% endautoescape %}-->
+                                            <td><a href="{% url 'trial_detail' title=t.title %}">{{t.title}}</a></td>
+                                        <!--<td>{{t.description}}</td>-->
+                                        <!--<td>{{t.country}}</td>-->
+                                        <!--<td>{{t.city}}</td>-->
 					<td><input type="submit" value="Enroll" class="btn btn-primary" formaction="{% url 'enroll' title=t.title%}"></a></td>
 					<td><input type="submit" value="Contact" class="btn btn-success " formaction="{% url 'contact' title=t.title%}"></a></td>
 
                                 </tr>
                                 </form>
                                 {% endfor %}
+                        <!--{% cycle 'danish' 'wani' as name silent %}-->
+                        <!--{% cycle name resetcycle %}-->
+                        <!--{{name}}-->
+
                         </tbody>
-                                                                                                                                                              10,7          Top
-                </div>
+        </table>
+{% endblock content%}
 	
 	
-</body>
-</html>
+

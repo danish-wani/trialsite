@@ -29,9 +29,8 @@
 					<td>{{o.username}}</td>
 					<td>{{o.creator}}</td>
 					<td><input type="submit" value="Delete Operator" class="btn btn-danger " formaction="{% url 'deleteOperator' id=o.id %}"></a></td>
-					<!--<td><input type="submit" value="Update Operator" class="btn btn-success " formaction=""></a></td>-->
-
-				</tr>
+					<td><input type="submit" value="Update Operator" class="btn btn-success " formaction="{%url 'update_operator' pk=o.id %}"></a></td>
+					</tr>
 				</form>
 				{% endfor %}
     			</tbody>

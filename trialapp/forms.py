@@ -37,10 +37,10 @@ class ListTrialForm():
         fields = ('title','description','country','city','creator',)
 
 
-class EditOperatorForm(UserChangeForm):
-    class Meta:
-        model = User 
-        fields = UserChangeForm.Meta.fields
+# class EditOperatorForm(UserChangeForm):
+#     class Meta:
+#         model = User
+#         fields = UserChangeForm.Meta.fields
         
 
 class CreateTrialForm(ModelForm):
@@ -64,3 +64,10 @@ class ContactForm(forms.Form):
     consultant = forms.CharField(label='Consultant',max_length=15)
     email = forms.EmailField(label='Email')
 
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Username', max_length=15)
+    password = forms.CharField(widget=forms.PasswordInput)
+    # class Meta:
+    #     widgets = {
+    #         'password': forms.PasswordInput(),
+    #     }
