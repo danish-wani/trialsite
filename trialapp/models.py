@@ -7,11 +7,30 @@ from django.contrib.auth.models import Permission, User
 class Trial(models.Model):
     title = models.CharField(max_length=100,primary_key=True)
     description = models.TextField()
-    country = models.CharField(max_length=80)
-    city = models.CharField(max_length=90)
+    country = models.ForeignKey('Country', on_delete=models.SET_NULL, null=True)
+    city = models.ForeignKey('City', on_delete=models.SET_NULL, null=True)
     creator = models.ForeignKey(User,on_delete=models.CASCADE)
     def __str__(self):
         return self.title
+
+
+class Country(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+    class Meta:
+        ordering = ['name']
+
+class City(models.Model):
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
 
 class Investigator(User):
     is_superuser = True

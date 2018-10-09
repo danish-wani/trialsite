@@ -1,24 +1,125 @@
-<!DOCTYPE html>
-<html>
-<head>
-        <title> Create trial </title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
+{% extends 'trialapp/base.html' %}
+{% block header %}
+        <a class="navbar-brand" href="#pablo">Trials</a>
+        <!--<form method="post">-->
+          <!--{% csrf_token%}-->
+          <!--<input type="submit" value="Create Trial" class="btn btn-primary " formaction="{% url 'createTrial' %}">-->
+        <!--</form>-->
+{% endblock header%}
 
-<body>
-        <div class="container bg-light">
-                <form action="" method="POST">
-                        <fieldset>
-                                <legend> <h1 class='txt-info'>Trial</h1> </legend>
-                                {% csrf_token %}
-                                {{form.as_p}}
+{%block navbar %}
 
-                                <input type="submit" value="Create" class="btn btn-primary float-right" >
-                        </fieldset>
-                </form>
+{% endblock navbar%}
+      <!-- End Navbar -->
+      {% block content %}
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Create Trial</h4>
+                  <!--<p class="card-category">Complete your profile</p>-->
+                </div>
+                <div class="card-body">
+                  <form method="post" id="personForm" data-cities-url="{% url 'load_cities' %}" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Title</label>
+                          <!--<input type="text" class="form-control" >-->
+                          {{ form.title }}
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Description</label>
+                          <!--<input type="text" class="form-control">-->
+                          {{ form.description }}
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Country</label>
+                          <!--<input type="text" class="form-control">-->
+                          {{ form.country }}
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">City</label>
+                          <!--<input type="text" class="form-control">-->
+                          {{ form.city }}
+                        </div>
+                      </div>
+                      <!--<div class="col-md-4">-->
+                        <!--<div class="form-group">-->
+                          <!--<label class="bmd-label-floating">Email Address</label>-->
+                          <!--&lt;!&ndash;<input type="text" class="form-control">&ndash;&gt;-->
+                          <!--{{ form.email }}-->
+                        <!--</div>-->
+                      <!--</div>-->
+                    </div>
+                     <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Creator</label>
+                          <!--<input type="text" class="form-control">-->
+                          {{ form.creator }}
+                        </div>
+                      </div>
+                     </div>
+                    <button type="submit" class="btn btn-primary pull-right">Create Trial</button>
+
+                    <div class="clearfix"></div>
+                  </form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_country").change(function () {
+      var url = $("#personForm").attr("data-cities-url");  // get the url of the `load_cities` view
+      var countryId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/trialapp/dashboard/createTrial/load-cities/)
+        data: {
+          'country': countryId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_city").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-profile">
+                <div class="card-avatar">
+                  <a href="#pablo">
+                    {% load static %}
+                    <img class="img" src="{% static 'trialapp/assets/img/faces/danish.jpg' %}" />
+                  </a>
+                </div>
+                <div class="card-body">
+                  <!--<h6 class="card-category text-gray">CEO / Co-Founder</h6>-->
+                  <h4 class="card-title">Danish Wani</h4>
+                  <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                  </p>
+                  <a href="https://github.com/danish-wani" class="btn btn-primary btn-round">Follow</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!--{% include 'trialapp/login.html' %}-->
-</body>
-</html>
+      </div>
 
+
+{% endblock content%}

@@ -5,17 +5,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trialapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialapp/templates/trialapp/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/templates/trialapp/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trialapp/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trialapp/migrations/0002_enrollment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trialapp/migrations/0003_auto_20180925_1207.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trialapp/migrations/0004_auto_20180927_0518.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trialapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trialapp/templates/trialapp/createTrial.html" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/templates/trialapp/createTrial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialapp/templates/trialapp/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/templates/trialapp/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialapp/templates/trialapp/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/templates/trialapp/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialapp/templates/trialapp/listOperator.html" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/templates/trialapp/listOperator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialapp/templates/trialapp/listTrial.html" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/templates/trialapp/listTrial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialapp/templates/trialapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/templates/trialapp/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trialapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trialapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/trialapp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trialsite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/trialsite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trialsite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/trialsite/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,36 +28,39 @@
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="html" value="20" />
-          <entry key="py" value="21" />
+          <entry key="html" value="47" />
+          <entry key="py" value="31" />
+          <entry key="rnc" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="20" />
+          <entry key="HTML" value="47" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="21" />
+          <entry key="Python" value="31" />
+          <entry key="RNG Compact" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="1977" />
-          <entry key="py" value="5848" />
+          <entry key="Python Console" value="115" />
+          <entry key="html" value="5769" />
+          <entry key="py" value="6806" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1977" />
-          <entry key="Python" value="5848" />
+          <entry key="HTML" value="5769" />
+          <entry key="Python" value="6921" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -67,67 +68,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="23" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trialapp/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+            <state relative-caret-position="-329">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
-                <marker date="1538491912715" expanded="true" signature="1853:1858" ph="..." />
-                <marker date="1538491912715" expanded="true" signature="1917:1918" ph="..." />
+                <marker date="1538996038499" expanded="true" signature="1282:1287" ph="..." />
+                <marker date="1538996038499" expanded="true" signature="3094:3099" ph="..." />
+                <marker date="1538996038499" expanded="true" signature="3158:3159" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/trials.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="776">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/createTrial.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="117">
+              <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/trialsite/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trialapp/templatetags/trialapp_extras.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-              <folding>
-                <marker date="1538645067412" expanded="true" signature="110:115" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trialsite/wsgi.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trialapp/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="328" column="74" selection-start-line="328" selection-start-column="74" selection-end-line="328" selection-end-column="74" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <marker date="1538548772060" expanded="true" signature="2204:2210" ph="..." />
-                <marker date="1538548772060" expanded="true" signature="7200:7684" ph="..." />
-                <marker date="1538548772060" expanded="true" signature="8412:8417" ph="..." />
-                <marker date="1538548772060" expanded="true" signature="8540:8545" ph="..." />
-              </folding>
+            <state relative-caret-position="117">
+              <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -135,11 +113,60 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trialapp/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+            <state relative-caret-position="408">
+              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/userSignin.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="85" column="57" lean-forward="true" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/userSignup.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="130" column="57" lean-forward="true" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trialapp/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="71" column="33" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1539017622512" expanded="true" signature="2252:2258" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/dashboardnew.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="39" column="116" selection-start-line="39" selection-start-column="116" selection-end-line="39" selection-end-column="116" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-204">
+              <caret line="102" column="64" selection-start-line="102" selection-start-column="64" selection-end-line="102" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -149,10 +176,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>init</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -161,30 +193,38 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/trialapp/templates/registration/login.html" />
-        <option value="$PROJECT_DIR$/trialapp/models.py" />
         <option value="$PROJECT_DIR$/trialapp/templates/trialapp/detailTrial.html" />
         <option value="$PROJECT_DIR$/trialapp/templates/trialapp/trial_detail.html" />
-        <option value="$PROJECT_DIR$/trialsite/urls.py" />
         <option value="$PROJECT_DIR$/trialapp/templates/trialapp/listTrial.html" />
         <option value="$PROJECT_DIR$/trialapp/templates/trialapp/dashboard.html" />
         <option value="$PROJECT_DIR$/trialapp/templates/trialapp/operator_update.html" />
-        <option value="$PROJECT_DIR$/trialapp/forms.py" />
         <option value="$PROJECT_DIR$/trialapp/templates/trialapp/operator_update_form.html" />
-        <option value="$PROJECT_DIR$/trialapp/urls.py" />
         <option value="$PROJECT_DIR$/trialapp/templates/trialapp/listOperator.html" />
-        <option value="$PROJECT_DIR$/trialapp/views.py" />
-        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/base.html" />
         <option value="$PROJECT_DIR$/trialapp/templates/trialapp/login.html" />
         <option value="$PROJECT_DIR$/trialapp/templates/trialapp/contact.html" />
-        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/createTrial.html" />
         <option value="$PROJECT_DIR$/trialapp/templates/base.html" />
-        <option value="$PROJECT_DIR$/trialsite/settings.py" />
         <option value="$PROJECT_DIR$/trialapp/templatetags/trialapp_extras.py" />
+        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/template.html" />
         <option value="$PROJECT_DIR$/trialapp/templates/trialapp/home.html" />
+        <option value="$PROJECT_DIR$/trialsite/urls.py" />
+        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/tables.html" />
+        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/user.html" />
+        <option value="$PROJECT_DIR$/trialapp/models.py" />
+        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/cities.html" />
+        <option value="$PROJECT_DIR$/trialapp/forms.py" />
+        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/trials.html" />
+        <option value="$PROJECT_DIR$/trialapp/urls.py" />
+        <option value="$PROJECT_DIR$/trialapp/views.py" />
+        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/userSignup.html" />
+        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/userSignin.html" />
+        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/base.html" />
+        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/dashboardnew.html" />
+        <option value="$PROJECT_DIR$/trialapp/templates/trialapp/createTrial.html" />
+        <option value="$PROJECT_DIR$/trialsite/settings.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="133" />
     <option name="y" value="47" />
     <option name="width" value="1400" />
@@ -195,7 +235,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -207,6 +246,27 @@
               <item name="trialsite" type="b2602c69:ProjectViewProjectNode" />
               <item name="trialsite" type="462c0819:PsiDirectoryNode" />
               <item name="trialapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trialsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trialsite" type="462c0819:PsiDirectoryNode" />
+              <item name="trialapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trialsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trialsite" type="462c0819:PsiDirectoryNode" />
+              <item name="trialapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="trialapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trialsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trialsite" type="462c0819:PsiDirectoryNode" />
+              <item name="trialapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="trialapp" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="trialsite" type="b2602c69:ProjectViewProjectNode" />
@@ -236,6 +296,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -319,7 +380,7 @@
     <frame x="0" y="25" width="1600" height="810" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19305019" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17374517" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -330,8 +391,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32794118" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.497426" visible="true" weight="0.2382353" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.502574" side_tool="true" weight="0.2382353" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4967825" visible="true" weight="0.3882353" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5032175" side_tool="true" weight="0.23235294" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32941177" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -357,20 +418,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trialsite/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/listEnrollment.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-51" />
@@ -383,48 +430,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <marker date="1538025547466" expanded="true" signature="461:465" ph="..." />
-            <marker date="1538025547466" expanded="true" signature="562:567" ph="..." />
-            <marker date="1538025547466" expanded="true" signature="792:796" ph="..." />
-            <marker date="1538025547466" expanded="true" signature="925:929" ph="..." />
-            <marker date="1538025547466" expanded="true" signature="1033:1038" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/listTrial.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="34" column="153" selection-start-line="34" selection-start-column="153" selection-end-line="34" selection-end-column="153" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/listOperator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="31" column="132" selection-start-line="31" selection-start-column="132" selection-end-line="31" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/operator_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
@@ -435,65 +444,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/createTrial.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-            <marker date="1538491912715" expanded="true" signature="1853:1858" ph="..." />
-            <marker date="1538491912715" expanded="true" signature="1917:1918" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trialapp/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trialapp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="328" column="74" selection-start-line="328" selection-start-column="74" selection-end-line="328" selection-end-column="74" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1538548772060" expanded="true" signature="2204:2210" ph="..." />
-            <marker date="1538548772060" expanded="true" signature="7200:7684" ph="..." />
-            <marker date="1538548772060" expanded="true" signature="8412:8417" ph="..." />
-            <marker date="1538548772060" expanded="true" signature="8540:8545" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trialsite/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trialsite/wsgi.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -502,16 +454,179 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-          <folding>
-            <marker date="1538645067412" expanded="true" signature="110:115" ph="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/template.html" />
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialsite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="23" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        <state relative-caret-position="17">
+          <caret line="49" column="67" lean-forward="true" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="15" column="115" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/listOperator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/listTrial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="38" column="44" lean-forward="true" selection-start-line="24" selection-start-column="32" selection-end-line="38" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/operators.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="61" lean-forward="true" selection-end-line="251" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1538992985998" expanded="true" signature="528:532" ph="..." />
+            <marker date="1538992985998" expanded="true" signature="929:930" ph="..." />
+            <marker date="1538992985998" expanded="true" signature="1027:1032" ph="..." />
+            <marker date="1538992985998" expanded="true" signature="1257:1261" ph="..." />
+            <marker date="1538992985998" expanded="true" signature="1390:1394" ph="..." />
+            <marker date="1538992985998" expanded="true" signature="1498:1503" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/core-scripting.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/cities.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/signup.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-329">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+            <marker date="1538996038499" expanded="true" signature="1282:1287" ph="..." />
+            <marker date="1538996038499" expanded="true" signature="3094:3099" ph="..." />
+            <marker date="1538996038499" expanded="true" signature="3158:3159" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="71" column="33" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1539017622512" expanded="true" signature="2252:2258" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/userSignin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="85" column="57" lean-forward="true" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/userSignup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="130" column="57" lean-forward="true" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/trials.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="776">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="102" column="64" selection-start-line="102" selection-start-column="64" selection-end-line="102" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/dashboardnew.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="39" column="116" selection-start-line="39" selection-start-column="116" selection-end-line="39" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialapp/templates/trialapp/createTrial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trialsite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
         </state>
       </provider>
     </entry>

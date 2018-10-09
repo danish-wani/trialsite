@@ -1,0 +1,98 @@
+
+{% extends 'trialapp/base.html' %}
+
+
+{% block title %} Home {% endblock title%}
+
+{% block sidebar %}
+          {% if request.user.is_authenticated %}
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'listOperator' %}">
+              <i class="material-icons">content_paste</i>
+              <p>Operator List</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="">
+              <i class="material-icons">content_paste</i>
+              <p>Patient List</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'list_trial' %}">
+              <i class="material-icons">library_books</i>
+              <p>Trials</p>
+            </a>
+          </li>
+        {% endif %}
+{% endblock sidebar%}
+
+              {% block navbar %}
+              {% if request.user.is_authenticated %}
+
+                <li class="nav-item">
+                Username: {{request.user}}
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">
+                  <input type="submit" value="Log Out" class="btn btn-danger " data-toggle = "tooltip" title="Logout"> </a>
+              </li>
+
+              </li>
+              {% else%}
+                 <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}" data-toggle = "tooltip" title="Login">
+                  <i class="material-icons">person</i>
+                  <p class="d-lg-none d-md-block">
+                    Account
+                  </p>
+                </a>
+              </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">
+                  <input type="submit" value="Signup As Investigator" class="btn btn-success " data-toggle = "tooltip" title="Signup"> </a>
+              </li>
+              {% endif %}
+              {% endblock navbar%}
+
+ {% block content %}
+          <div class=" col-md-12">  <!-- col-lg-6 -->
+              <div class="card">
+                <div class="card-header card-header-warning">
+                  <h4 class="card-title">Trials</h4>
+                  <!--<p class="card-category">New employees on 15th September, 2016</p>-->
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-striped">
+                    <thead class="text-warning">
+                      <th>Title</th>
+                      <!--<th>Name</th>-->
+                      <!--<th>Salary</th>-->
+                      <!--<th>Country</th>-->
+                      <th> </th>
+                      <th> </th>
+                    </thead>
+                    <tbody>
+                      {% for t in trials %}
+                      <form method="post">
+                        {% csrf_token %}
+                      <tr>
+                        <td><a href="{% url 'trial_detail' title=t.title %}">{{t.title}}</a></td>
+                        <td><input type="submit" value="Enroll" class="btn btn-primary" formaction="{% url 'enroll' title=t.title%}"></a></td>
+					    <td><input type="submit" value="Contact" class="btn btn-success " formaction="{% url 'contact' title=t.title%}"></a></td>
+                      </tr>
+                      </form>
+                      {% endfor %}
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+  {% endblock content %}
+
+
+

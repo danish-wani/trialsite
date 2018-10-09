@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from .models import Investigator, Operator, Trial, Enrollment
+from .models import Country, City
 
 class InvestigatorForm(ModelForm):
     class Meta:
@@ -41,12 +42,45 @@ class ListTrialForm():
 #     class Meta:
 #         model = User
 #         fields = UserChangeForm.Meta.fields
-        
+
+# import django-select2
 
 class CreateTrialForm(ModelForm):
     class Meta:
         model = Trial
         fields = ('title','description','country','city','creator',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['city'].queryset = City.objects.none()
+
+
+        if 'country' in self.data:
+            try:
+                country_id = int(self.data.get('country'))
+                self.fields['city'].queryset = City.objects.filter(country_id=country_id).order_by('name')
+            except (ValueError, TypeError):
+                pass  # invalid input from the client; ignore and fallback to empty City queryset
+        elif self.instance.pk:
+            self.fields['city'].queryset = self.instance.country.city_set.order_by('name')
+    # country = forms.ModelChoiceField(
+    #     queryset=Country.objects.all(),
+    #     label="Country",
+    #     widget=ModelSelect2Widget(
+    #         search_fields=['name__icontains'],
+    #         dependent_fields={'city': 'cities'},
+    #     )
+    # )
+    #
+    # city = forms.ModelChoiceField(
+    #     queryset=City.objects.all(),
+    #     label="City",
+    #     widget=ModelSelect2Widget(
+    #         search_fields=['name__icontains'],
+    #         dependent_fields={'country': 'country'},
+    #         max_results=500,
+    #     )
+    # )
 
 
 class PatientSignupForm(UserCreationForm):
