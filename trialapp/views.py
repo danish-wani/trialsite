@@ -15,12 +15,13 @@ from django.views import View
 def home(request):
         
     trials = Trial.objects.all()
-    return render(request,'trialapp/home.html',{'trials':trials})
+    return render(request,'trialapp/dashboardnew.html',{'trials':trials})
     
 
 
 
 def signup(request):
+
     if request.method == 'POST':
         form = InvestigatorSignupForm(request.POST)
         if form.is_valid():
@@ -32,7 +33,7 @@ def signup(request):
     else:
         form = InvestigatorSignupForm(request.POST)
                    
-    return render(request,'trialapp/signup.html',{'form':form})
+    return render(request,'trialapp/userSignup.html',{'form':form})
 
 
 
@@ -62,13 +63,13 @@ def signupOperator(request):
     else:
         form = OperatorSignupForm(request.POST)
 
-    return render(request,'trialapp/signup.html',{'form':form})
+    return render(request,'trialapp/userSignup.html',{'form':form, 'successful_submit': True})
 
 
 
 class EnrollView(View):
     form_class = PatientSignupForm
-    template_name='trialapp/signup.html'
+    template_name='trialapp/userSignup.html'
 
     def get_queryset(self):
         return self.kargs['title']
@@ -100,7 +101,7 @@ def createTrial(request):
             return HttpResponse('Trial Created successfully')
 
     else:
-        form = CreateTrialForm()
+        form = CreateTrialForm(initial={'creator': request.user})
 
     return render(request,'trialapp/createTrial.html',{'form':form})
 
@@ -110,7 +111,7 @@ def createTrial(request):
 def listTrial(request):
     trials = Trial.objects.filter(creator=request.user)
     operators = Operator.objects.filter(creator=request.user)
-    print(trials)
+    # print(trials)
     for o in operators:
         trials = trials | Trial.objects.filter(creator=o)
 
@@ -119,17 +120,18 @@ def listTrial(request):
 
 @login_required
 def listOperator(request):
-    print(request.user.has_perm('trialapp.view_operator'))
-    if request.method == 'POST':
-        print(id)
-        form = ListOperatorForm()
-        
+    # # print(request.user.has_perm('trialapp.view_operator'))
+    # if request.method == 'POST':
+    #     # print(id)
+    #     form = ListOperatorForm()
+    #
+    #
+    # #else:
+    #     #form = DeleteOperatorForm(request.POST)
 
-    #else:
-        #form = DeleteOperatorForm(request.POST)
     operators = Operator.objects.filter(creator=request.user)
     
-    return render(request,'trialapp/listOperator.html',{'operators':operators})
+    return render(request,'trialapp/operators.html',{'operators':operators,})
 
 
 
@@ -230,11 +232,18 @@ from django.views.generic.detail import DetailView
 
 
 class ListTrials(ListView):
-    template_name = 'trialapp/listTrial.html'
+    template_name = 'trialapp/trials.html'
     success_url = '/trialapp'
 
     def get_queryset(self):
-        return Trial.objects.all()
+        trials = Trial.objects.filter(creator=self.request.user)
+        operators = Operator.objects.filter(creator=self.request.user)
+        # print(trials)
+        for o in operators:
+            trials = trials | Trial.objects.filter(creator=o)
+
+        # return render(request, 'trialapp/listTrial.html', {'trials': trials})
+        return trials
 
 class DetailTrial(DetailView):
     template_url = 'trialapp/trial_detail.html'
@@ -251,9 +260,9 @@ class DetailTrial(DetailView):
 
 '''generic editing view'''
 
-class CreatePatient(CreateView):
+class SignupPatient(CreateView):
     form_class = PatientSignupForm
-    template_name = 'trialapp/signup.html'
+    template_name = 'trialapp/userSignup.html'
     success_url = '/trialapp'
 
 
@@ -290,43 +299,50 @@ class UpdateOperator(UpdateView):
         print(obj)
         return obj
 
-# class Login(FormView):
-#     form_class = LoginForm
-#     template_name = 'trialapp/login.html'
-#     success_url = '/trialapp'
-#
-#     def form_valid(self,form):
-#         username = form.cleaned_data['username']
-#         password = form.cleaned_data['password']
-#         user = authenticate(username=username, password=password)
-#         if user is not None and user.is_active:
-#             login(self.request, user)
-#         else:
-#             return HttpResponse('Invalid Username or Password')
-#
-#          return super().form_valid(form)
 
-'''generic base view'''
-class Login(View):
+
+class Login(FormView):
     form_class = LoginForm
+    template_name = 'trialapp/userSignin.html'
     success_url = '/trialapp'
-    template_name = 'trialapp/login.html'
-    def post(self, request):
-        logout(request)
-        # username = password = ''
 
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
+    def form_valid(self,form):
+        print('form_valid method')
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
         user = authenticate(username=username, password=password)
         if user is not None and user.is_active:
-            login(request, user)
-            return HttpResponseRedirect(self.success_url)
-        return render(request, self.template_name,{'form':self.form_class,})
+            print('logged in')
+            login(self.request, user)
+        else:
+            return HttpResponseRedirect('')
 
-    def get(self, request):
-        text = 'less than < greater than > single quote ampersand &'
-        return render(request, self.template_name, {'form':self.form_class,})
+        return super().form_valid(form)
+
+'''generic base view'''
+# class Login(View):
+#     # form_class = LoginForm
+#     success_url = '/trialapp'
+#     template_name = 'trialapp/userSignin.html'   #login.html
+#     def post(self, request):
+#         logout(request)
+#         print('post method')
+#         form = LoginForm(request.POST)
+#         # username = password = ''
+#         # form = self.form_class(request.POST)
+#         username = form.cleaned_data['username']
+#         password = form.cleaned_data['password']
+#
+#         user = authenticate(username=username, password=password)
+#         if user is not None and user.is_active:
+#             login(request, user)
+#             return HttpResponseRedirect(self.success_url)
+#         return render(request, self.template_name,{'form':form})
+#
+#     def get(self, request):
+#         form = LoginForm()
+#         print(' get method')
+#         return render(request, self.template_name,{'form':form})
 
 
 
@@ -337,3 +353,10 @@ class Login(View):
 #
 #     def get_redirect_url(self,*args,**kwargs):
 #         return super().get_redirect_url(*args,**kwargs)
+from .models import City
+
+
+def load_cities(request):
+    country_id = request.GET.get('country')
+    cities = City.objects.filter(country_id=country_id).order_by('name')
+    return render(request, 'trialapp/cities.html', {'cities': cities})

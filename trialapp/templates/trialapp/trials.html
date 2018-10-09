@@ -1,0 +1,53 @@
+      {% extends 'trialapp/base.html' %}
+      {% block title %} Trials {% endblock title%}
+      {% block header %}
+        <a class="navbar-brand" href="#pablo">Trials</a>
+        <form method="post">
+          {% csrf_token%}
+          <input type="submit" value="Create Trial" class="btn btn-primary " formaction="{% url 'createTrial' %}">
+        </form>
+      {% endblock header%}
+      {% block content%}
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Trials</h4>
+                  <!--<p class="card-category"> Here is a subtitle for this table</p>-->
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th> Creator</th>
+                        <th> Country</th>
+                        <th> City</th>
+                        <th></th>
+                      </thead>
+                      <tbody>
+				                {% for t in object_list %}
+                                <form method='POST'>
+                                        {% csrf_token %}
+                                        <tr>
+                                        <td>{{t.title}}</td>
+					                    <td>{{t.description}}</td>
+                                        <td>{{t.creator}}</td>
+                                        <td>{{t.country}}</td>
+                                        <td>{{t.city}}</td>
+					                    <td><input type="submit" value="Delete Trial" class="btn btn-danger " formaction="{% url 'deleteTrial' title=t.title %}"></a></td>
+                                        <!--<td><input type="submit" value="Edit Trial" class="btn btn-success " formaction=""></a></td>-->
+
+                                </tr>
+                                </form>
+                                {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endblock content %}

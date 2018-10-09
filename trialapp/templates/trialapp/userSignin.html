@@ -1,0 +1,151 @@
+
+{% extends 'trialapp/base.html' %}
+{% block sidebar %}
+          <!--<li class="nav-item ">-->
+            <!--<a class="nav-link" href="./userSignin.html">-->
+              <!--<i class="material-icons">person</i>-->
+              <!--<p>User Profile</p>-->
+            <!--</a>-->
+          <!--</li>-->
+          {% if request.user.is_authenticated %}
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'listOperator' %}">
+              <i class="material-icons">content_paste</i>
+              <p>Operator List</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="">
+              <i class="material-icons">content_paste</i>
+              <p>Patient List</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'list_trial' %}">
+              <i class="material-icons">library_books</i>
+              <p>Trials</p>
+            </a>
+          </li>
+        {% endif %}
+{% endblock sidebar%}
+
+{% block content %}
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Login</h4>
+                  <!--<p class="card-category">Complete your profile</p>-->
+                </div>
+                <div class="card-body">
+                  <form method="post">
+                    {% csrf_token%}
+                    <div class="row">
+                      <!--<div class="col-md-5">-->
+                        <!--<div class="form-group">-->
+                          <!--<label class="bmd-label-floating">Company (disabled)</label>-->
+                          <!--<input type="text" class="form-control" disabled>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Username</label>
+                          {{form.username}}
+                          <!--<input type="text" class="form-control">-->
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Password</label>
+                          {{form.password }}
+                          <!--<input type="password" class="form-control">-->
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <input type="submit" class="btn btn-primary pull-right" value="Login"></input>
+
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-profile">
+                <div class="card-avatar">
+                  <a href="#pablo">
+                    {% load static %}
+                    <img class="img" src="{% static 'trialapp/assets/img/faces/danish.jpg' %}" />
+                  </a>
+                </div>
+                <div class="card-body">
+                  <!--<h6 class="card-category text-gray">CEO / Co-Founder</h6>-->
+                  <h4 class="card-title">Danish Wani</h4>
+                  <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                  </p>
+                  <a href="https://github.com/danish-wani" class="btn btn-primary btn-round">Follow</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock content %}
+      <footer class="footer">
+        <div class="container-fluid">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="https://www.creative-tim.com">
+                  Creative Tim
+                </a>
+              </li>
+              {% block footer %}
+              <li>
+                <a href="https://creative-tim.com/presentation">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="http://blog.creative-tim.com">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="https://www.creative-tim.com/license">
+                  Licenses
+                </a>
+              </li>
+              {% endblock footer %}
+            </ul>
+          </nav>
+          <div class="copyright float-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, made with <i class="material-icons">favorite</i> by
+            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="../assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chartist JS -->
+  <script src="../assets/js/plugins/chartist.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
+  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+  <script src="../assets/demo/demo.js"></script>
