@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nested Checkboxes</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        @color: #f36;
+        body {
+          color: @color;
+          background: white;
+        }
+        ul {
+          list-style: none;
+        }
+        li {
+          margin-left: -20px;
+        }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li><label><input type="checkbox"/> All Accounts</label>
+        <ul class="accounts">
+            <li><label><input type="checkbox"/>Investigators</label>
+            <ul class="subaccounts">
+                {% for i in investigators %}
+                <li><label><input type="checkbox"/> {{ i.first_name }} {{i.last_name}}</label></li>
+                <!--<li><label><input type="checkbox"/> 2</label></li>-->
+                {% endfor %}
+            </ul>
+            </li>
+        <li><label><input type="checkbox"/>Operators </label>
+            <ul class="subaccounts">
+                {% for o in operators %}
+                <li><label><input type="checkbox"/> {{ o.first_name }}{{ o.last_name }}</label></li>
+                <!--<li><label><input type="checkbox"/> 2</label></li>-->
+                {% endfor %}
+            </ul>
+        </li>
+        </ul>
+        </li>
+    </ul>
+<script>
+
+$('input').prop('checked', false);
+
+function checkParents($li, state) {
+  var $siblings = $li.siblings();
+  var $parent = $li.parent().closest('li');
+  state = state && $siblings.children('label').find('input').prop('checked');
+  $parent.children('label').find('input').prop('checked', state);
+  if ($parent.parents('li').length)
+    checkParents($parent, state);
+}
+
+$('input').change(function () {
+  var $cb = $(this);
+  var $li = $cb.closest('li');
+  console.log($li)
+  var state = $cb.prop('checked');
+
+  // check all children
+  $li.find('input').prop('checked', state);
+
+  // check all parents, as applicable
+  if ($li.parents('li').length)
+    checkParents($li, state);
+});
+
+
+</script>
+</body>
+</html>

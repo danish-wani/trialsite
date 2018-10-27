@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import Permission, User
 
 class Trial(models.Model):
-    title = models.CharField(max_length=100,primary_key=True)
+    title = models.CharField(max_length=100, primary_key=True)
     description = models.TextField()
     country = models.ForeignKey('Country', on_delete=models.SET_NULL, null=True)
     city = models.ForeignKey('City', on_delete=models.SET_NULL, null=True)
@@ -53,22 +53,51 @@ class Patient(User):
     def __str__(self):
         return 'Patient'
 
-class Message(models.Model):
-    text = models.TextField()
 
-    def __str__(self):
-        return self.text
-
-class Conversation(models.Model):
-    sender = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Sender')
-    receiver = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Receiver')
-    message = models.ForeignKey('Message',on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.sender+" to "+self.receiver+":" + self.message
+# class Message(models.Model):
+#     text = models.TextField()
+#
+#     def __str__(self):
+#         return self.text
+#
+# class Conversation(models.Model):
+#     sender = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Sender')
+#     receiver = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Receiver')
+#     message = models.ForeignKey('Message',on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#         return self.sender+" to "+self.receiver+":" + self.message
 
 
 class Enrollment(models.Model):
     patient_name = models.CharField(max_length=15)
     trial = models.OneToOneField('Trial',on_delete=models.CASCADE)
     email = models.EmailField()
+
+
+class Student(models.Model):
+    first_name = models.CharField(max_length=15)
+    last_name = models.CharField(max_length=15)
+    semester = models.CharField(max_length=10)
+    courses = models.ManyToManyField('Course')
+
+class Course(models.Model):
+    name = models.CharField(max_length=20)
+
+
+
+class File(models.Model):
+    # title = models.CharField(max_length=255, blank=True)
+    file = models.FileField(upload_to='photos/')
+    # uploaded_at = models.DateTimeField(auto_now_add=True)
+
+
+
+class Animal(models.Model):
+    ANIMAL_CHOICES = (
+       ('c', 'cat'),
+       ('r', 'rabbit'),
+       ('d', 'dog'),
+     )
+
+    name = models.CharField(max_length=1, choices=ANIMAL_CHOICES)

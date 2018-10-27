@@ -33,5 +33,15 @@ urlpatterns = [
 
     path('dashboard/createTrial/load-cities/', views.load_cities, name='load_cities'),
 
+    # path('nested_forms/',views.nested_forms,name='nested_forms'),
+    path('nested_forms/',views.StudentView.as_view(), name='save_form_data'),
+    path('nested_forms/save_form_data/', views.SaveFormData.as_view(), name='save_form_data'),
+    path('nested_forms/save_data/',views.save_data, name='save_data'),
+    path('file_upload/', views.upload_view, name='basic_upload'),
+    path('file_upload/load_files/', views.load_files, name='load_files'),
+    path('autocomplete/ajax_calls/search/', views.autocompleteModel, name='autocompletemodel'),
+    path('autocomplete/', views.autocomplete, name='autocomplete'),
+    path('checkbox_heirarchy/', views.checkboxheirarchy, name='checkbox'),
+
 ]
 

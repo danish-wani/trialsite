@@ -10,6 +10,7 @@ from .forms import OperatorSignupForm, ContactForm
 from .forms import ListOperatorForm 
 from .forms import CreateTrialForm, PatientSignupForm
 from django.views import View
+from django.contrib import messages
 
 
 def home(request):
@@ -265,6 +266,25 @@ class SignupPatient(CreateView):
     template_name = 'trialapp/userSignup.html'
     success_url = '/trialapp'
 
+    def form_valid(self, form):
+        # print('form_valid method')
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        first_name = form.cleaned_data['first_name']
+        last_name = form.cleaned_data['last_name']
+        email = form.cleaned_data['email']
+        password = form.cleaned_data['password']
+
+
+        # user = authenticate(username=username, password=password)
+        if user is not None and user.is_active:
+            print('logged in')
+            login(self.request, user)
+        else:
+            return HttpResponseRedirect('')
+
+        return super().form_valid(form)
+
 
 class UpdateOperator(UpdateView):
     model = Operator
@@ -312,8 +332,10 @@ class Login(FormView):
         password = form.cleaned_data['password']
         user = authenticate(username=username, password=password)
         if user is not None and user.is_active:
-            print('logged in')
+            # print('logged in')
+            messages.success(self.request, 'Account created successfully')
             login(self.request, user)
+
         else:
             return HttpResponseRedirect('')
 
@@ -360,3 +382,80 @@ def load_cities(request):
     country_id = request.GET.get('country')
     cities = City.objects.filter(country_id=country_id).order_by('name')
     return render(request, 'trialapp/cities.html', {'cities': cities})
+
+
+from .forms import StudentRecordForm
+class StudentView(CreateView):
+    form_class = StudentRecordForm
+    template_name = 'trialapp/basic_upload.html'
+    success_url = 'save_form_data'
+
+
+    def form_valid(self, form):
+        return HttpResponse(form.cleaned_data['first_name'])
+
+
+def save_data(request):
+    # return ("hey there, this is ajax content")
+    pass
+
+
+class SaveFormData(View):
+    pass
+
+
+
+
+from .forms import FileForm
+from .models import File
+
+
+def upload_view(request):
+    if request.is_ajax():
+        form = FileForm(data=request.POST, files=request.FILES)
+        print(request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("form is valid")
+        else:
+            return HttpResponse(form.errors)
+
+    form = FileForm()
+    files = File.objects.all()
+    return render(request,"trialapp/basic_upload.html",{"form":form,"files":files,})
+
+def load_files(request):
+    files = File.objects.all()
+    return render(request, 'trialapp/files.html', {'files': files})
+
+
+def autocomplete(request):
+    return render(request,'trialapp/autocomplete.html')
+
+import json
+from .models import Country
+def autocompleteModel(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '').capitalize()
+        search_qs = Country.objects.filter(name__startswith=q)
+        results = []
+        print (q)
+        for r in search_qs:
+            results.append(r.FIELD)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+from .forms import AddAnimal
+
+def checkboxheirarchy(request):
+    # form = AddAnimal()
+
+    investigators = Investigator.objects.all()
+    operators = Operator.objects.all()
+
+
+    return render(request,'trialapp/nested_checkboxes.html',{'investigators':investigators,'operators':operators})

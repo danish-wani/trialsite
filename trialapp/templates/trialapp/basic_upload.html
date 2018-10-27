@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>file upload</title>
+    {% load static %}
+    <!--<script src="{% static 'jquery.min.js' %}"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"> </script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+
+
+
+
+    <form action="" method="post" id="file-upload-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit" class="btn btn-primary" id='upload-btn'>Upload</button>
+    </form>
+    <div class="upload-area" style="background-color:powderblue; width:30%; heigh250px;">
+        {% csrf_token %}
+        <h3><br>Drag <br><br>and<br><br> Drop your file here...<br> ....</h3>
+
+    </div>
+        <ul>
+
+        </ul>
+
+
+<script>
+
+
+
+    $(document).ready(function(){
+        retrieve()
+       });
+
+    function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+
+    function uploadData(data){
+        console.log("Upload data");
+        console.log(data.get('file'));
+        var csrftoken = Cookies.get('csrftoken');
+        console.log(data.get(csrftoken));
+
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+
+
+
+        $.ajax({
+                url: "",            <!--$(this).attr('action'),-->
+                type: "POST",       <!--$(this).attr('method'),-->
+                data: data,
+                cache: true,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    alert('success');
+                    retrieve();
+                },
+                error: function(){
+                    alert('Failed');
+                }
+            });
+
+
+    }
+
+        function upload(event) {
+            event.preventDefault();
+            var data = new FormData($('form').get(0));
+            <!--console.log("upload function");-->
+            console.log(data);
+            uploadData(data);
+
+
+            return false;
+        }
+
+        $(function() {
+            $('form').submit(upload);
+        });
+
+    function retrieve(){
+        $.ajax({
+                url: "load_files/",
+                type: $(this).attr('method'),
+                <!--data: data,-->
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    $("ul").html(data)
+                }
+        });
+    }
+
+
+<!---->
+<!---->
+<!---->
+    $("html").on("dragover", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        <!--$("h1").text("Drag here");-->
+     });
+
+    $("html").on("drop", function(e) { e.preventDefault(); e.stopPropagation(); });
+
+
+    // Drag enter
+    $('.upload-area').on('dragenter', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+    });
+
+    // Drag over
+    $('.upload-area').on('dragover', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+    });
+
+
+<!---->
+<!---->
+<!---->
+
+    // Drop
+    $('.upload-area').on('drop', function (e) {
+        console.log('DROPPPPPPPPPPP')
+        e.stopPropagation();
+        e.preventDefault();
+
+        var file = e.originalEvent.dataTransfer.files;
+        var fd = new FormData();
+        console.log(fd);
+        fd.append('file', file[0]);
+        console.log(fd);
+        uploadData(fd);
+    });
+
+
+
+
+</script>
+
+
+</body>
+
+</html>

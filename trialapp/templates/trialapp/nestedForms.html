@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nested Forms</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--<link rel="style" type="text/css" href="">-->
+    <!--<script>-->
+    <!--$(document).ready(function(){-->
+    <!--$("#btn1").click(function(){-->
+        <!--$("#log").toggle();-->
+        <!--$("#login").toggle();-->
+
+      <!--});-->
+     <!--$("#btn2").click(function(){-->
+        <!--$("#extra").toggle();-->
+       <!--});-->
+<!--});-->
+<!--</script>-->
+</head>
+<body>
+
+    <h2> Student Record:</h2>
+
+    <!--<div class="div1 div2" style="color:green" style="background-color:red">-->
+
+
+    <!--Too bad! Same old story! Once you’ve finished building your house you notice you’ve accidentally learned something that you really should have known—before you started.-->
+    <!--Friedrich Nietzsche, Beyond Good and Evil-->
+    <!--</div>-->
+    <form method="post" id="personForm">
+        {% csrf_token%}
+        <div class="form-group"><input type="submit" value="Save" style="float:right"></div>
+        <br><br>
+        <fieldset>
+            <legend>Personal Info: </legend>
+            <div class="form-group">  <a  id="addStudent" > <b>**Add Student**</b> </a> </br>   <!--onclick="outer()"-->
+                <label>First Name:</label>
+                <!--<input type="text" class="form-control">-->
+                {{form.first_name}}
+                <label>Last Name:</label>
+                <!--<input type="text" class="form-control">-->
+                {{form.last_name}}
+                <label>Semester:</label>
+                <!--<input type="number" class="form-control" max="10" min="1">-->
+                {{form.semester}}
+                <fieldset>
+                    <legend>Courses: </legend>
+                    <div class="form-group"><a id="addCourse"> <b>**Add Course**</b> </a> </br>   <!--onclick="inner(this)"-->
+                        <label>Course:</label>
+                        <input type="text" class="form-control">
+                        <!--{{form.courses}}-->
+                        <!--<label>Password:</label>-->
+                        <!--<input type="password" class="form-control">-->
+                    </div>
+                </fieldset>
+            </div>
+        </fieldset>
+
+
+
+    </form>
+
+
+<script>
+
+
+
+
+        $(document).ready(function(){
+            $("#addStudent").click(function(){
+
+                var ancestor = $("#addStudent").parents("form")
+                var fs = $("<fieldset></fieldset>");
+                ancestor.append(fs);
+                var legend = $("<legend></legend>").text("Personal Info:");
+                fs.append(legend);
+                var div = $("<div></div>").addClass("form-group");
+
+
+                var label = $("<label></label>").text("First Name:");
+
+                div.append(label);
+
+                var fname = $("<input></input>").attr({"type":"text","class":"form-control"});
+                div.append(fname);
+                var label = $("<label></label>").text("Last Name:");
+                div.append(label);
+                var lname = $("<input></input>").attr({"type":"text","class":"form-control"});
+                div.append(lname);
+
+                var label = $("<label></label>").text("Semester:");
+                div.append(label);
+                var semester = $("<input></input>").attr({"type":"number","class":"form-control"});
+                div.append(semester);
+
+                fs.append(div);
+
+                var fs1 = $("<fieldset></fieldset>");
+                ancestor.append(fs);
+                var legend = $("<legend></legend>").text("Courses:");
+                fs1.append(legend);
+                var div1 = $("<div></div>").addClass("form-group");
+                var anchor = $("<a></a>");
+                var bold = $("<b></b>").text("**Add Course**");
+                anchor.on('click',function(){
+
+                let inner = $(this).closest("fieldset")
+
+                let label = $("<label></label>").text("Course:");
+                inner.append($("<br>"));
+                inner.append(label);
+
+                let course = $("<input></input>").attr({"type":"text","class":"form-control"});
+                inner.append(course);
+
+
+                })
+                anchor.append(bold);
+                div1.append(anchor);
+
+                var label = $("<label></label>").text("Course:");
+                div1.append($("<br>"))
+                div1.append(label);
+
+                var course = $("<input></input>").attr({"type":"text","class":"form-control"});
+                div1.append(course);
+
+                fs1.append(div1);
+
+                fs.append(fs1);
+
+
+
+            });
+
+            $("#addCourse").click(function(){
+
+                let inner = $("#addCourse").closest("fieldset")
+
+                let label = $("<label></label>").text("Course:");
+                inner.append($("<br>"));
+                inner.append(label);
+
+                let course = $("<input></input>").attr({"type":"text","class":"form-control"});
+                inner.append(course);
+
+            });
+});
+
+
+
+
+
+<!--JAVASCRIPT-->
+
+
+
+    <!--function outer(){-->
+
+        <!--var p = document.getElementById("personForm");-->
+
+        <!--var fs = document.createElement('fieldset')-->
+        <!--var ld = document.createElement('legend')-->
+        <!--var ldText = document.createTextNode('Personal Info:')-->
+        <!--ld.appendChild(ldText)-->
+        <!--fs.appendChild(ld)-->
+
+        <!--var div = document.createElement('div')-->
+        <!--div.class = "form-group"-->
+        <!--var label = document.createElement('label');-->
+        <!--var labelText = document.createTextNode('First Name:');-->
+        <!--label.append(labelText)-->
+        <!--var fname = document.createElement('input');-->
+
+        <!--var temp = document.getElementById('id_first_name')-->
+        <!--var f = temp.cloneNode()-->
+        <!--div.appendChild(label)-->
+        <!--div.appendChild(f)-->
+
+
+
+
+        <!--var label = document.createElement('label');-->
+        <!--var labelText = document.createTextNode('Last Name:');-->
+        <!--label.append(labelText)-->
+        <!--var lname = document.createElement('input');-->
+
+        <!--div.appendChild(label);-->
+        <!--div.appendChild(lname);-->
+
+
+        <!--var label = document.createElement('label');-->
+        <!--var labelText = document.createTextNode('Semeter:');-->
+        <!--label.append(labelText)-->
+        <!--var sem = document.createElement('input');-->
+        <!--sem.type = 'number'-->
+        <!--sem.max = '10'-->
+        <!--sem.min = '1'-->
+        <!--div.appendChild(label);-->
+        <!--div.appendChild(sem);-->
+
+
+
+
+
+
+        <!--var fs1 = document.createElement('fieldset')-->
+        <!--var ld1 = document.createElement('legend')-->
+        <!--var ld1Text = document.createTextNode('Courses:')-->
+        <!--ld1.appendChild(ld1Text)-->
+        <!--fs1.appendChild(ld1)-->
+
+        <!--var div1 = document.createElement('div')-->
+        <!--div1.class = "form-group"-->
+        <!--var anch = document.createElement('a')-->
+
+
+
+
+
+        <!--&lt;!&ndash;anch.onclick = inner;&ndash;&gt;-->
+        <!--anch.addEventListener('click', handler, false)-->
+
+
+
+
+        <!--&lt;!&ndash;mydiv2.addEventListener( 'click', myhandler, false )&ndash;&gt;-->
+        <!--var anchB = document.createElement('b')-->
+        <!--var anchBtext = document.createTextNode("**Add Course** ")-->
+        <!--anchB.appendChild(anchBtext)-->
+        <!--anch.appendChild(anchB)-->
+        <!--div1.appendChild(anch)-->
+        <!--div1.appendChild(document.createElement('br'))-->
+        <!--var label = document.createElement('label');-->
+        <!--var labelText = document.createTextNode('Course:');-->
+        <!--label.append(labelText)-->
+
+        <!--div1.appendChild(label);-->
+
+        <!--var course = document.createElement('input');-->
+        <!--div1.appendChild(course);-->
+
+        <!--&lt;!&ndash;var label = document.createElement('label');&ndash;&gt;-->
+        <!--&lt;!&ndash;var labelText = document.createTextNode('Password:');&ndash;&gt;-->
+        <!--&lt;!&ndash;label.append(labelText)&ndash;&gt;-->
+        <!--&lt;!&ndash;div1.appendChild(label);&ndash;&gt;-->
+
+        <!--&lt;!&ndash;var pwd = document.createElement('input');&ndash;&gt;-->
+        <!--&lt;!&ndash;pwd.type = 'password'&ndash;&gt;-->
+        <!--&lt;!&ndash;div1.appendChild(pwd);&ndash;&gt;-->
+
+        <!--fs1.append(div1)-->
+
+
+        <!--fs.appendChild(div)-->
+        <!--fs.appendChild(fs1)-->
+        <!--p.appendChild(document.createElement('br'));-->
+        <!--p.appendChild(fs);-->
+
+
+
+    <!--}-->
+
+    <!--function inner(n){-->
+
+        <!--var p = n.parentNode;-->
+        <!--console.log(n.parentNode.nodeName)-->
+
+        <!--var d = document.createElement('div')-->
+        <!--d.class = "form-group"-->
+        <!--var label = document.createElement('label');-->
+        <!--var labelText = document.createTextNode('Course:');-->
+        <!--label.append(labelText)-->
+        <!--d.appendChild(document.createElement('br'))-->
+        <!--d.appendChild(label);-->
+
+        <!--var course = document.createElement('input');-->
+        <!--d.appendChild(course);-->
+
+        <!--&lt;!&ndash;var label = document.createElement('label');&ndash;&gt;-->
+        <!--&lt;!&ndash;var labelText = document.createTextNode('Password:');&ndash;&gt;-->
+        <!--&lt;!&ndash;label.append(labelText)&ndash;&gt;-->
+        <!--&lt;!&ndash;d.appendChild(label);&ndash;&gt;-->
+
+        <!--&lt;!&ndash;var pwd = document.createElement('input');&ndash;&gt;-->
+        <!--&lt;!&ndash;d.appendChild(pwd);&ndash;&gt;-->
+
+        <!--&lt;!&ndash;var p = n.parentNode;&ndash;&gt;-->
+        <!--p.appendChild(d);-->
+
+    <!--}-->
+
+    <!--function handler(event){-->
+        <!--var target = event.target.parentNode-->
+
+        <!--console.log(target.parentNode.nodeName)-->
+        <!--var p = target.parentNode;-->
+        <!--&lt;!&ndash;console.log(n.parentNode.nodeName)&ndash;&gt;-->
+
+        <!--var d = document.createElement('div')-->
+        <!--d.class = "form-group"-->
+        <!--var label = document.createElement('label');-->
+        <!--var labelText = document.createTextNode('Course:');-->
+        <!--label.append(labelText)-->
+        <!--d.appendChild(document.createElement('br'))-->
+        <!--d.appendChild(label);-->
+
+        <!--var course = document.createElement('input');-->
+        <!--d.appendChild(course);-->
+
+        <!--&lt;!&ndash;var label = document.createElement('label');&ndash;&gt;-->
+        <!--&lt;!&ndash;var labelText = document.createTextNode('Password:');&ndash;&gt;-->
+        <!--&lt;!&ndash;label.append(labelText)&ndash;&gt;-->
+        <!--&lt;!&ndash;d.appendChild(label);&ndash;&gt;-->
+
+        <!--&lt;!&ndash;var pwd = document.createElement('input');&ndash;&gt;-->
+        <!--&lt;!&ndash;d.appendChild(pwd);&ndash;&gt;-->
+
+        <!--&lt;!&ndash;var p = n.parentNode;&ndash;&gt;-->
+        <!--p.appendChild(d);-->
+
+    <!--}-->
+
+
+</script>
+</body>
+</html>

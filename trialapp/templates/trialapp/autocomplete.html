@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>autocomplete</title>
+    <!--{% load static %}-->
+    <!--<script src="{% static 'jquery.min.js' %}"></script>-->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+
+    <div class="container" style="width:500px;">
+
+                <label>Country </label>
+                <input type="text" name="country" id="country" class="form-control" placeholder="Enter Country Name" />
+                <div id="countryList">
+
+                <!--</div><br><br><br><br><br><br><br>-->
+                <!--<div id="c"> hey</div>-->
+    </div>
+
+
+
+
+    <!--<form id=”search” method=”POST” action=””}-->
+        <!--{% csrf_token %}-->
+        <!--<label class="form-control">Country</label>-->
+        <!--<input type=”text” class=”form-control” id=”txtSearch” name=”txtSearch”>-->
+        <!--&lt;!&ndash;<button type=”submit” class=”btn btn-default btn-submit”>Submit</button>&ndash;&gt;-->
+    <!--</form>-->
+
+
+
+
+<script>
+
+      $(document).ready(function(){
+      $('#country').keydown(function(){
+           var query = $(this).val();
+           if(query != '')
+           {
+                $.ajax({
+                     url:"ajax_calls/search/",
+                     method:"POST",
+                     data:{query:query},
+                     success:function(data)
+                     {
+                          $('#countryList').fadeIn();
+                          $('#countryList').html(data);
+
+                          <!--$('#c').html(data);-->
+                     }
+                });
+           }
+      });
+      $(#countryList).on('click', 'li', function(){
+           $('#country').val($(this).text());
+           $('#countryList').fadeOut();
+      });
+ });
+
+
+
+
+       <!--$(document).ready(function(){-->
+            <!--$("#country").autocomplete({-->
+                <!--source: "ajax_calls/search/",-->
+                <!--minLength: 2,-->
+                <!--open: function(){-->
+                    <!--setTimeout(function () {-->
+                        <!--$('.ui-autocomplete').css('z-index', 99);-->
+                    <!--}, 0);-->
+                <!--}-->
+              <!--});-->
+
+        <!--});-->
+
+
+</script>
+
+</body>
+</html>

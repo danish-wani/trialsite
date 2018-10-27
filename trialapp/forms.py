@@ -105,3 +105,29 @@ class LoginForm(forms.Form):
     #     widgets = {
     #         'password': forms.PasswordInput(),
     #     }
+from .models import Student
+class StudentRecordForm(ModelForm):
+    class Meta:
+        model = Student
+        fields = ('first_name','last_name','semester',)
+
+
+
+from .models import File
+
+class FileForm(forms.ModelForm):
+    class Meta:
+        model = File
+        fields = ('file', )
+
+
+from django.forms.widgets import CheckboxSelectMultiple
+
+from .models import Animal
+
+class AddAnimal(forms.ModelForm):
+    animals = forms.ChoiceField(choices=Animal.ANIMAL_CHOICES, widget=forms.RadioSelect)
+    class Meta:
+        model = Animal
+        # widgets = {'name': forms.RadioSelect}
+        fields = {}
