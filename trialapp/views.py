@@ -10,7 +10,7 @@ from .forms import OperatorSignupForm, ContactForm
 from .forms import ListOperatorForm 
 from .forms import CreateTrialForm, PatientSignupForm
 from django.views import View
-
+from django.urls import reverse, reverse_lazy
 
 def home(request):
         
@@ -175,7 +175,7 @@ def deleteTrial(request,title):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/trialapp')
+    return HttpResponseRedirect(reverse('home'))
 
 
 
@@ -304,7 +304,7 @@ class UpdateOperator(UpdateView):
 class Login(FormView):
     form_class = LoginForm
     template_name = 'trialapp/userSignin.html'
-    success_url = '/trialapp'
+    success_url = reverse_lazy(home)        #callable view object or URL pattern name
 
     def form_valid(self,form):
         print('form_valid method')

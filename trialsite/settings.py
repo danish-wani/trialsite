@@ -25,7 +25,7 @@ SECRET_KEY = 'i#n7$l6po45r2hranhbroa6ok@ei$o++m2j%hss_rqr@4zon+='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -71,6 +71,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'trialsite.wsgi.application'
+
+
+# login url
+LOGIN_URL = 'login/'
 
 
 # Database

@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Trial
+from .models import Country
+from .models import City
+from .models import Operator
+
+admin.site.register([Trial, Country, City, Operator])

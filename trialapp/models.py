@@ -16,7 +16,7 @@ class Trial(models.Model):
 
 class Country(models.Model):
     name = models.CharField(max_length=30)
-
+    verbose_name = 'Countries'
     def __str__(self):
         return self.name
     class Meta:
@@ -25,7 +25,7 @@ class Country(models.Model):
 class City(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
-
+    verbose_name = 'Cities'
     def __str__(self):
         return self.name
 
