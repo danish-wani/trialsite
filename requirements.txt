@@ -8,4 +8,4 @@ pyppeteer==0.0.25
 pytz==2018.5
 tqdm==4.28.1
 virtualenv==16.0.0
-websockets==7.0
+websockets==9.1
